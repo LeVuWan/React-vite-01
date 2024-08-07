@@ -1,0 +1,33 @@
+.todo_app {
+    width: 600px;
+    margin: 50px auto;
+}
+
+.todo_list {
+    font-size: 30px;
+    color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo_data {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.input>input {
+    margin-right: 2px;
+}
