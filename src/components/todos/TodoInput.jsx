@@ -1,15 +1,20 @@
+import { useState } from "react";
 import "./todo.css";
 
 const TodoInput = (props) => {
-  console.log("Check props: " + props.addNewTodo);
+  const [valueInput, setValueInput] = useState("Quang Vu");
+
+  // console.log("Check props: " + props.addNewTodo);
   const { addNewTodo } = props;
+
   const handleClick = () => {
-    alert("Click me");
+    console.log("Check value input: ", valueInput);
   };
+
   const handleOnChange = (name) => {
-    console.log("handleOnChange: ", name);
+    setValueInput(name);
   };
-  // addNewTodo("Vux");
+  console.log("Check props: ", props);
   return (
     <div className="input">
       <input
@@ -19,6 +24,7 @@ const TodoInput = (props) => {
       <button style={{ cursor: "pointer" }} onClick={handleClick}>
         Add
       </button>
+      <div className="valueInput">My text input is {valueInput}</div>
     </div>
   );
 };

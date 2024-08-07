@@ -4,7 +4,7 @@ const TodoData = (props) => {
   const { data } = props;
 
   console.log("Check props: ", props);
-  return <div className="todo_data">My name is {data.name}</div>;
+  return <div className="todo_data">{JSON.stringify(props.todoList)}</div>;
 };
 
 export default TodoData;
