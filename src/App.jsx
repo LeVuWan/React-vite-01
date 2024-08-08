@@ -9,6 +9,10 @@ const App = () => {
     { id: 2, name: "watching youtube" },
   ]);
 
+  const randomIntFromInterval = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
   const data = {
     name: "Vux",
     address: "Da Nang",
@@ -16,13 +20,17 @@ const App = () => {
   };
 
   const addNewTodo = (name) => {
-    alert(`Call me ${name}`);
+    const newTodo = {
+      id: randomIntFromInterval(0, 1000),
+      name: name,
+    };
+    setTodoList([...todoList, newTodo]);
   };
 
   return (
     <div className="todo_app">
       <div className="todo_list">Todo List</div>
-      <TodoInput todoList={todoList}></TodoInput>
+      <TodoInput todoList={todoList} addNewTodo={addNewTodo}></TodoInput>
       <TodoData todoList={todoList} />
       <div className="todo_img">
         <img src={DemeLogo} alt="" />
