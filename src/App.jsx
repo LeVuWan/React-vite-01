@@ -5,18 +5,12 @@ import DemeLogo from "./assets/react.svg";
 import { useState } from "react";
 const App = () => {
   const [todoList, setTodoList] = useState([
-    { id: 1, name: "learning react" },
-    { id: 2, name: "watching youtube" },
+    // { id: 1, name: "learning react" },
+    // { id: 2, name: "watching youtube" },
   ]);
 
   const randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-  const data = {
-    name: "Vux",
-    address: "Da Nang",
-    country: "Viet Nam",
   };
 
   const addNewTodo = (name) => {
