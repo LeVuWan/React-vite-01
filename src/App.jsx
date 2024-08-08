@@ -20,7 +20,11 @@ const App = () => {
     };
     setTodoList([...todoList, newTodo]);
   };
-  console.log("Check: ", todoList.length);
+
+  const deleteTodo = (id) => {
+    const updateTodo = todoList.filter((todo) => todo.id != id);
+    setTodoList(updateTodo);
+  };
 
   return (
     <div className="todo_app">
@@ -31,7 +35,7 @@ const App = () => {
           <img src={DemeLogo} alt="" />
         </div>
       ) : (
-        <TodoData todoList={todoList} />
+        <TodoData todoList={todoList} deleteTodo={deleteTodo} />
       )}
     </div>
   );

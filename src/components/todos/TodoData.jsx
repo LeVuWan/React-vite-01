@@ -1,7 +1,12 @@
 import "./todo.css";
 
 const TodoData = (props) => {
-  const { todoList } = props;
+  const { todoList, deleteTodo } = props;
+
+  const onClickDelete = (id) => {
+    alert(id);
+    deleteTodo(id);
+  };
 
   console.log("Check props: ", props);
   return (
@@ -10,7 +15,7 @@ const TodoData = (props) => {
         return (
           <div className={`todo_item`} key={item.id || index}>
             <div> {item.name}</div>
-            <button>Delete</button>
+            <button onClick={() => onClickDelete(item.id)}>Delete</button>
           </div>
         );
       })}
