@@ -31,3 +31,8 @@
 .input>input {
     margin-right: 2px;
 }
+
+.todo_item {
+    display: flex;
+    justify-content: space-between;
+}

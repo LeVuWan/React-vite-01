@@ -1,10 +1,21 @@
 import "./todo.css";
 
 const TodoData = (props) => {
-  const { data } = props;
+  const { todoList } = props;
 
   console.log("Check props: ", props);
-  return <div className="todo_data">{JSON.stringify(props.todoList)}</div>;
+  return (
+    <div>
+      {todoList.map((item, index) => {
+        return (
+          <div className="todo_item">
+            <div> {item.name}</div>
+            <button>Delete</button>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default TodoData;
