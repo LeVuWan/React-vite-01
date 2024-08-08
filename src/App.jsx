@@ -20,15 +20,19 @@ const App = () => {
     };
     setTodoList([...todoList, newTodo]);
   };
+  console.log("Check: ", todoList.length);
 
   return (
     <div className="todo_app">
       <div className="todo_list">Todo List</div>
       <TodoInput todoList={todoList} addNewTodo={addNewTodo}></TodoInput>
-      <TodoData todoList={todoList} />
-      <div className="todo_img">
-        <img src={DemeLogo} alt="" />
-      </div>
+      {todoList == 0 ? (
+        <div className="todo_img">
+          <img src={DemeLogo} alt="" />
+        </div>
+      ) : (
+        <TodoData todoList={todoList} />
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./todo.css";
 
 const TodoInput = (props) => {
-  const [valueInput, setValueInput] = useState("Quang Vu");
+  const [valueInput, setValueInput] = useState();
 
   // console.log("Check props: " + props.addNewTodo);
   const { addNewTodo } = props;
