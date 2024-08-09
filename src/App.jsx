@@ -5,6 +5,7 @@ import DemeLogo from "./assets/react.svg";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 const App = () => {
   const [todoList, setTodoList] = useState([
     // { id: 1, name: "learning react" },
@@ -35,13 +36,14 @@ const App = () => {
         <div className="todo_list">Todo List</div>
         <TodoInput todoList={todoList} addNewTodo={addNewTodo}></TodoInput>
         {todoList == 0 ? (
-          <div className="todo_img">
-            <img src={DemeLogo} alt="" />
+          <div className="todo-img">
+            <img src={DemeLogo} alt="" className="logo" />
           </div>
         ) : (
           <TodoData todoList={todoList} deleteTodo={deleteTodo} />
         )}
       </div>
+      <Outlet />
       <Footer />
     </>
   );
