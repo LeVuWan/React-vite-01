@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/login.jsx";
 import UserPage from "./pages/users.jsx";
 import ProductPage from "./pages/product.jsx";
+import TodoApp from "./components/todos/TodoApp.jsx";
 import RegisterPage from "./pages/register.jsx";
 import "./style/global.css";
 
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        element: <TodoApp />,
+      },
       {
         path: "/users",
         element: <UserPage />,
