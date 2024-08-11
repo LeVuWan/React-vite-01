@@ -2,15 +2,24 @@ import Input from "antd/es/input/Input";
 import "./user.css";
 import { Button } from "antd/es/radio";
 import { useState } from "react";
+import axios from "axios";
 
 const UserForm = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
   const handClickButton = () => {
-    console.log("Check form: ", { fullName, phoneNumber, email, password });
+    const URL_Backend = "http://localhost:8080/api/v1/user";
+    const data = {
+      fullName: fullName,
+      phone: phone,
+      email: email,
+      password: password,
+    };
+    axios.post(URL_Backend, data);
+    console.log("Check form: ", { fullName, phone, email, password });
   };
 
   //   const handOnChange = (value) => {
@@ -41,7 +50,7 @@ const UserForm = () => {
         <div className="">
           <span>Phone:</span>
           <Input
-            value={phoneNumber}
+            value={phone}
             onChange={(event) => {
               setPhoneNumber(event.target.value);
             }}
