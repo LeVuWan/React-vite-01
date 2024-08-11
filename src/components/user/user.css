@@ -1,0 +1,39 @@
+.userForm {
+    max-width: 500px;
+    /* Giới hạn chiều rộng tối đa của form */
+    margin: 0 auto;
+    /* Căn giữa form */
+    padding: 20px;
+    /* Khoảng cách bên trong form */
+    border: 1px solid #ccc;
+    /* Viền của form */
+    border-radius: 8px;
+    /* Bo góc form */
+    background-color: #f9f9f9;
+    /* Màu nền */
+}
+
+.userForm div {
+    margin-bottom: 15px;
+    /* Khoảng cách giữa các dòng nhập liệu */
+}
+
+.userForm span {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    /* Đậm chữ mô tả */
+}
+
+.userForm input {
+    width: 100%;
+    /* Đặt chiều rộng của input bằng 100% chiều rộng của div chứa */
+    padding: 10px;
+    /* Khoảng cách bên trong input */
+    box-sizing: border-box;
+    /* Đảm bảo padding không làm tăng chiều rộng của input */
+    border: 1px solid #ccc;
+    /* Viền của input */
+    border-radius: 4px;
+    /* Bo góc của input */
+}

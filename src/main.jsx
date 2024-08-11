@@ -8,11 +8,13 @@ import ProductPage from "./pages/product.jsx";
 import TodoApp from "./components/todos/TodoApp.jsx";
 import RegisterPage from "./pages/register.jsx";
 import "./style/global.css";
+import ErrorPage from "./pages/error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
