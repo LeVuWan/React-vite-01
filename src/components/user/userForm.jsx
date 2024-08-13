@@ -2,7 +2,7 @@ import Input from "antd/es/input/Input";
 import "./user.css";
 import { Button } from "antd/es/radio";
 import { useState } from "react";
-import { notification } from "antd";
+import { notification, Modal } from "antd";
 import { createUserApi } from "../../service/apiService";
 
 const UserForm = () => {
@@ -11,7 +11,9 @@ const UserForm = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
 
-  const handClickButton = async () => {
+  const [isModalOpen, setIsModelOpen] = useState(false);
+
+  const handSubmitBtn = async () => {
     const res = await createUserApi(fullName, email, password, phone);
 
     if (res.data) {
@@ -19,18 +21,41 @@ const UserForm = () => {
         message: "Create user",
         description: "Tạo mới user thành công",
       });
+      setIsModelOpen(false);
     } else {
       notification.error({
         message: "Error create user",
         description: JSON.stringify(res.message),
       });
     }
-    console.log("Check res: ", res.data);
   };
 
   return (
     <div className="userForm">
       <div className="">
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <h3>Table Users</h3>
+          <Button
+            type="primary"
+            onClick={() => {
+              setIsModelOpen(true);
+            }}
+          >
+            Create user
+          </Button>
+        </div>
+      </div>
+      <Modal
+        title="Create Users"
+        open={isModalOpen}
+        onOk={() => {
+          handSubmitBtn();
+        }}
+        onCancel={() => {
+          setIsModelOpen(false);
+        }}
+        maskClosable={false}
+      >
         <div className="">
           <span>Full name:</span>
           <Input
@@ -69,13 +94,7 @@ const UserForm = () => {
             }}
           />
         </div>
-
-        <div>
-          <Button type="primary" onClick={handClickButton}>
-            Create user
-          </Button>
-        </div>
-      </div>
+      </Modal>
     </div>
   );
 };
