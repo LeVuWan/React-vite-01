@@ -5,7 +5,8 @@ import { useState } from "react";
 import { notification, Modal } from "antd";
 import { createUserApi } from "../../service/apiService";
 
-const UserForm = () => {
+const UserForm = (props) => {
+  const { loadUser } = props;
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,13 +22,22 @@ const UserForm = () => {
         message: "Create user",
         description: "Tạo mới user thành công",
       });
-      setIsModelOpen(false);
+      resetAndCloseModel();
+      await loadUser();
     } else {
       notification.error({
         message: "Error create user",
         description: JSON.stringify(res.message),
       });
     }
+  };
+
+  const resetAndCloseModel = () => {
+    setIsModelOpen(false);
+    setFullName("");
+    setEmail("");
+    setPassword("");
+    setPhone("");
   };
 
   return (
