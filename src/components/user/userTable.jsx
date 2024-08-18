@@ -1,7 +1,7 @@
 import { Table, message, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { UpdateUserModal } from "./update.user.modal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DetailUser } from "./view.user.detail";
 import { deleteUserAPI } from "../../service/apiService";
 
@@ -11,9 +11,23 @@ const UserTable = (props) => {
   const [dataUpdate, setDataUpdate] = useState(null);
   const [userDetail, setUserDetail] = useState(null);
 
-  const { dataUser, loadUser } = props;
+  const {
+    dataUser,
+    loadUser,
+    pageSize,
+    current,
+    total,
+    setCurrent,
+    setPageSize,
+  } = props;
 
   const columns = [
+    {
+      title: "STT",
+      render: (_, record, index) => {
+        return <>{index + 1 + (current - 1) * pageSize}</>;
+      },
+    },
     {
       title: "Id",
       dataIndex: "_id",
@@ -92,9 +106,42 @@ const UserTable = (props) => {
     message.error("Click on No");
   };
 
+  const onChange = (pagination) => {
+    if (pagination && pagination.current) {
+      if (+pagination.current !== +current) {
+        setCurrent(+pagination.current);
+      }
+    }
+
+    if (pagination && pagination.pageSize) {
+      if (pagination.pageSize !== pageSize) {
+        setPageSize(pagination.pageSize);
+      }
+    }
+  };
+
   return (
     <>
-      <Table columns={columns} dataSource={dataUser} rowKey={"_id"} />
+      <Table
+        columns={columns}
+        dataSource={dataUser}
+        rowKey={"_id"}
+        pagination={{
+          current: current,
+          pageSize: pageSize,
+          showSizeChanger: true,
+          total: total,
+          showTotal: (total, range) => {
+            return (
+              <div>
+                {" "}
+                {range[0]}-{range[1]} trên {total} rows
+              </div>
+            );
+          },
+        }}
+        onChange={onChange}
+      />
       <UpdateUserModal
         dataUpdate={dataUpdate}
         setDataUpdate={setDataUpdate}
@@ -103,6 +150,7 @@ const UserTable = (props) => {
         loadUser={loadUser}
       />
       <DetailUser
+        loadUser={loadUser}
         userDetail={userDetail}
         isOpenModalDetailUser={isOpenModalDetailUser}
         setIsOpenModalDetailUser={setIsOpenModalDetailUser}
