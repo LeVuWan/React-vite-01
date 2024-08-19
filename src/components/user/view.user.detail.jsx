@@ -25,12 +25,10 @@ export const DetailUser = (props) => {
       setSelectedFile(file);
       setPreview(URL.createObjectURL(file));
     }
-    console.log("Check file: ", file);
   };
 
   const handleUpdateUserAvatar = async () => {
     const resUpload = await handleUploadFile(selectedFile, "avatar");
-    // console.log("Check resUpload", resUpload);
     if (resUpload.data) {
       const newAvatar = resUpload.data.fileUploaded;
 
@@ -55,8 +53,6 @@ export const DetailUser = (props) => {
           description: JSON.stringify(resUpdateAvatar.message),
         });
       }
-
-      console.log("Check new avatar: ", newAvatar);
     } else {
       notification.error({
         message: "Error upload file",

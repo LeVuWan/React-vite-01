@@ -4,7 +4,6 @@ import "./todo.css";
 const TodoInput = (props) => {
   const [valueInput, setValueInput] = useState();
 
-  // console.log("Check props: " + props.addNewTodo);
   const { addNewTodo } = props;
 
   const handleClick = () => {
@@ -15,7 +14,6 @@ const TodoInput = (props) => {
   const handleOnChange = (name) => {
     setValueInput(name);
   };
-  console.log("Check props: ", props);
   return (
     <div className="input">
       <input

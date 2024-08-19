@@ -8,7 +8,6 @@ const TodoData = (props) => {
     deleteTodo(id);
   };
 
-  console.log("Check props: ", props);
   return (
     <div>
       {todoList.map((item, index) => {

@@ -24,8 +24,6 @@ const UserPage = () => {
     }
   };
 
-  console.log("Check pagesize: ", pageSize);
-
   return (
     <div style={{ padding: "20px" }}>
       <UserForm loadUser={loadUser}></UserForm>

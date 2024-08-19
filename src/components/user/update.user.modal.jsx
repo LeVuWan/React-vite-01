@@ -17,7 +17,6 @@ export const UpdateUserModal = (props) => {
   const [phone, setPhone] = useState("");
 
   useEffect(() => {
-    console.log("Check data update: ", dataUpdate);
     if (dataUpdate) {
       setId(dataUpdate._id),
         setFullName(dataUpdate.fullName),

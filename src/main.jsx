@@ -8,6 +8,8 @@ import TodoApp from "./components/todos/TodoApp.jsx";
 import RegisterPage from "./pages/register.jsx";
 import "./style/global.css";
 import ErrorPage from "./pages/error.jsx";
+import { AuthWrapper } from "./components/context/auth.context.jsx";
+import { PrivateRoute } from "./pages/private.route.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <ProductPage />,
+        element: (
+          <PrivateRoute>
+            <ProductPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -41,6 +47,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <RouterProvider router={router} />
+  <AuthWrapper>
+    <RouterProvider router={router} />
+  </AuthWrapper>
+
   // </React.StrictMode>
 );

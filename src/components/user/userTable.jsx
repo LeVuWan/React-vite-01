@@ -63,7 +63,6 @@ const UserTable = (props) => {
           <EditOutlined
             style={{ cursor: "pointer", color: "orange" }}
             onClick={() => {
-              console.log("Check: ", record);
               setDataUpdate(record);
               setIsModalUpdateOpen(true);
             }}
@@ -78,9 +77,7 @@ const UserTable = (props) => {
           >
             <DeleteOutlined
               style={{ cursor: "pointer", color: "red" }}
-              onClick={() => {
-                console.log("Check");
-              }}
+              onClick={() => {}}
             />
           </Popconfirm>
         </div>
@@ -89,8 +86,6 @@ const UserTable = (props) => {
   ];
 
   // loadUser();
-
-  // console.log("check: ", isOpenModalDetailUser);
 
   const confirm = async (record) => {
     try {
